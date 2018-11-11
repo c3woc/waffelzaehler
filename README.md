@@ -1,4 +1,4 @@
- Waffelzaehler
+ Waffelzähler
 ==================
 
 Automatisiertes zählen der Waffeln des [C3WOC](https://c3woc.de).
