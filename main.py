@@ -13,22 +13,25 @@ waffel = [36, 37, 38, 40]
 
 debug = False
 
-def setup:
+def setup():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    for key in waffel.items():
+    for key in waffel:
          GPIO.setup(key, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-         if debug: print("GPIOs eingestellt")
+         if debug: print("Pin [" + str(key) + "] - GPIOs eingestellt")
 
             
 
 for i in argv:
     if i in ["--help", "-h", "/h", "/help", "?", "h"]:
-        print("Moegliche Befehle:\n\t --help \t- Zeigt diese Hilfe an")
-        print("\t--debug\t- Debug Modus...")
+        print("\n\tMoegliche Befehle:\n")
+        print("\t --help \t- Zeigt diese Hilfe an")
+        print("\t --debug\t- Debug Modus...")
         print("\n")
         exit()
     elif i == "--debug":
         debug = True
         print("Debug Modus")
-                                                                                                                                
+
+setup()
+
