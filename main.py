@@ -17,7 +17,7 @@ def print_waffle_state():
     wpm = waffle_counter / minutes
     print("Waffle Number: {0:5}  -  {1:6.2f} WPM       \033[F".format(waffle_counter, wpm))
     with open("waffle_count.txt", "a") as myfile:
-        myfile.write("{}: {}\n".format(last_waffle_at, waffle_counter))
+        myfile.write("{}: {}\n".format(datetime.now(), waffle_counter))
 def handle_admin_commands():
     global waffle_counter
     global first_waffle_at
@@ -57,6 +57,7 @@ print("No Waffles yet :(\033[F")
 while True:
     handle_admin_commands()
     GPIO.wait_for_edge(waffle_iron_detector_pin, GPIO.FALLING, timeout=200)
+    print(GPIO.input(waffle_iron_detector_pip))
     if GPIO.input(waffle_iron_detector_pin) == GPIO.LOW:
         waffle_iron_open = False
         continue
